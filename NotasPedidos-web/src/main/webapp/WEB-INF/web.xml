@@ -4,9 +4,17 @@
         <servlet-name>Notas</servlet-name>
         <servlet-class>com.mycompany.servlets.Notas</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NuevaNota</servlet-name>
+        <servlet-class>com.mycompany.servlets.NuevaNota</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Notas</servlet-name>
         <url-pattern>/Notas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NuevaNota</servlet-name>
+        <url-pattern>/NuevaNota</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

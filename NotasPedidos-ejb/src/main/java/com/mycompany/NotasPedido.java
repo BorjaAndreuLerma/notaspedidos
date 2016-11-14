@@ -13,11 +13,20 @@ import java.util.Date;
  * @author alumno
  */
 public class NotasPedido implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
     int id, num_mesa;
     Date fecha;
     double cuenta;
+    String hora;
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
 
     public int getId() {
         return id;
@@ -51,18 +60,16 @@ public class NotasPedido implements Serializable {
         this.cuenta = cuenta;
     }
 
-    public NotasPedido(int id, int num_mesa, Date fecha) {
+    public NotasPedido(int id, int num_mesa, Date fecha, String hora) {
         this.id = id;
         this.num_mesa = num_mesa;
         this.fecha = fecha;
+        this.hora = hora;
     }
 
     @Override
     public String toString() {
-        return "Nota--> Id: "+id+", Numero mesa: "+num_mesa+", Fecha: "+fecha+", Cuenta: "+cuenta;
+        return "Nota--> Id: " + id + ", Numero mesa: " + num_mesa + ", Fecha: " + fecha + ", Cuenta: " + cuenta;
     }
-    
-    
-    
-    
+
 }

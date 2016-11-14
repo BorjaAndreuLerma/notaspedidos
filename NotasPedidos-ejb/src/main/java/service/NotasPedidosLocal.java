@@ -5,6 +5,9 @@
  */
 package service;
 
+import com.mycompany.NotasPedido;
+import java.sql.Date;
+import java.util.ArrayList;
 import javax.ejb.Local;
 
 /**
@@ -13,5 +16,17 @@ import javax.ejb.Local;
  */
 @Local
 public interface NotasPedidosLocal {
+
+    ArrayList ListadoNotas();
+
+    boolean addNota(NotasPedido nota);
+
+    boolean modNota(NotasPedido nota);
+
+    NotasPedido encontrarPorFecha(Date fecha);
+
+    boolean eliminarNota(NotasPedido nota);
+
+    
     
 }
