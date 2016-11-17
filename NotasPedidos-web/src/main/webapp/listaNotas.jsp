@@ -4,8 +4,8 @@
     Author     : alumno
 --%>
 
+<%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.sql.Date"%>
 <%@page import="com.mycompany.NotasPedido"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,7 +18,7 @@
     <body>
         <h1>Listado de Notas</h1>
         
-	<a href="agregarPersona.jsp">Añadir Nota</a>
+	<a href="nuevaNota.jsp">Añadir Nota</a>
 	<br/>
 	<br/>
 
@@ -48,8 +48,8 @@
                     <td><%=fecha%></td>
                     <td><%=hora%></td>
                     <td><%=cuenta%></td>
-                    <td><a href="ModificarPersona?accion=editar&id=<%=id%>">Modificar</a></td>
-                    <td><a href="EliminarPersona?id=<%=id%>">Eliminar</a></td>
+                    <td><a href="ModificarNota?accion=editar&id=<%=id%>">Modificar</a></td>
+                    <td><a href="EliminarNota?id=<%=id%>">Eliminar</a></td>
                 </tr>
                 <% } %>
 	</table>

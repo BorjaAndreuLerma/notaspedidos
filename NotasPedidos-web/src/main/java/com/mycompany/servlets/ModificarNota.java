@@ -19,17 +19,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import service.NotasPedidos;
 import service.NotasPedidosLocal;
 
 /**
  *
  * @author alumno
  */
-public class NuevaNota extends HttpServlet {
+public class ModificarNota extends HttpServlet {
 
     @EJB
     private NotasPedidosLocal notasPedidos;
+    
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,41 +43,63 @@ public class NuevaNota extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String accion = request.getParameter("accion");
 
-        try {
+        if (accion != null && accion.equals("editar")) {
             
-            int numMesa = Integer.parseInt(request.getParameter("numMesa"));
-            SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
-            String[] fechaNuev = request.getParameterValues("fecha");
-            Date fecha = formatoFecha.parse(fechaNuev[0]);
-            String hora = request.getParameter("hora");
-            double cuenta = Double.parseDouble(request.getParameter("cuenta"));
-            
-            NotasPedido nota = new NotasPedido(numMesa, fecha, hora);
-            nota.setCuenta(cuenta);
-            
-            ArrayList<NotasPedido> listaNotasExis = notasPedidos.ListadoNotas();
-            
-            try {
-                boolean esta = false;
-                for (int i = 0; i < listaNotasExis.size(); i++) {
-                    if (listaNotasExis.get(i).getFecha() == nota.getFecha() && listaNotasExis.get(i).getHora() == nota.getHora()) {
-                        esta = true;
-                    }
+            //1. Recuperamos el id de la persona seleccionada
+            String ids = request.getParameter("id");
+            if (ids != null) {
+                //2. Creamos el objeto persona a recuperar
+                int id = Integer.valueOf(ids);
+                NotasPedido nota= new NotasPedido();
+                nota.setId(id);
+                try{              
+                    nota = this.notasPedidos.encontrarPorId(nota);
+                }catch(Exception e){
+                    e.printStackTrace();
                 }
-                if (esta = false) {
-                    notasPedidos.addNota(nota);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+
+                
+                request.setAttribute("nota", nota);
+                request.getRequestDispatcher("/modificarNota.jsp").forward(request, response);
             }
-            
-            ArrayList<NotasPedido> lista = notasPedidos.ListadoNotas();
-            request.setAttribute("notas", lista);
-            
-            request.getRequestDispatcher("/listarPersonas.jsp").forward(request, response);
-        } catch (ParseException ex) {
-            Logger.getLogger(NuevaNota.class.getName()).log(Level.SEVERE, null, ex);
+        }else if  (accion != null && accion.equals("modificar")) {      
+
+            try {      
+                
+                int id = Integer.parseInt(request.getParameter("id"));
+                int numMesa = Integer.parseInt(request.getParameter("numMesa"));
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+                String[] fechaBorr =  request.getParameterValues("fecha");
+                Date fecha = formatoFecha.parse(fechaBorr[0]);
+                String hora = request.getParameter("hora");
+                double cuenta = Double.parseDouble(request.getParameter("cuenta"));
+                
+                NotasPedido nota = new NotasPedido();
+                int idFin = Integer.valueOf(id);
+                nota.setId(idFin);
+                nota.setNum_mesa(numMesa);
+                nota.setFecha(fecha);
+                nota.setHora(hora);
+                nota.setCuenta(cuenta);
+                
+                try {
+                    this.notasPedidos.modNota(nota);
+                } catch (Exception e) {
+                    //Informamos cualquier error
+                    e.printStackTrace();
+                }
+                
+                // Volvemos a cargar la lista de personas
+                ArrayList<NotasPedido> lista = notasPedidos.ListadoNotas();
+                request.setAttribute("notas", lista);
+                
+                request.getRequestDispatcher("/listaNotas.jsp").forward(request, response);
+            } catch (ParseException ex) {
+                Logger.getLogger(ModificarNota.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 

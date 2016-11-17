@@ -52,6 +52,7 @@ public class NotasPedidos implements NotasPedidosLocal {
         listaNotas.add(new NotasPedido(3, 32, fechaF3, "17:00"));
         listaNotas.add(new NotasPedido(4, 20, fechaF4, "19:30"));
         listaNotas.add(new NotasPedido(5, 12, fechaF5, "00:00"));
+
     }
 
     // Add business logic below. (Right-click in editor and choose
@@ -114,6 +115,19 @@ public class NotasPedidos implements NotasPedidosLocal {
             }
         }
         return false;
+    }
+
+    @Override
+    public NotasPedido encontrarPorId(NotasPedido nota) {
+        Iterator<NotasPedido> it = listaNotas.iterator();
+        NotasPedido notaEnc=null;
+        while(it.hasNext()){
+            NotasPedido n = it.next();
+            if(n.getId()==nota.getId()){
+                notaEnc= n;
+            }
+        }
+        return notaEnc;
     }
 
 }

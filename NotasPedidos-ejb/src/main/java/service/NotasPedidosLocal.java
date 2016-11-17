@@ -27,6 +27,8 @@ public interface NotasPedidosLocal {
 
     boolean eliminarNota(NotasPedido nota);
 
+    NotasPedido encontrarPorId(NotasPedido nota);
+
     
     
 }

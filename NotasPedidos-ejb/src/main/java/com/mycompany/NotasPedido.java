@@ -24,6 +24,9 @@ public class NotasPedido implements Serializable {
         return hora;
     }
 
+    public NotasPedido() {
+    }
+
     public void setHora(String hora) {
         this.hora = hora;
     }
@@ -58,6 +61,12 @@ public class NotasPedido implements Serializable {
 
     public void setCuenta(double cuenta) {
         this.cuenta = cuenta;
+    }
+
+    public NotasPedido(int num_mesa, Date fecha, String hora) {
+        this.num_mesa = num_mesa;
+        this.fecha = fecha;
+        this.hora = hora;
     }
 
     public NotasPedido(int id, int num_mesa, Date fecha, String hora) {

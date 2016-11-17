@@ -14,19 +14,19 @@
     <body>
         <h1>Añadir Nueva Nota</h1>
 	
-	<form action="AltaPersona" method="post">
+	<form action="NuevaNota" method="post">
 		<input type="hidden" name="accion" value="agregar"/>
 	
-		<label for="nombre">Numero de Mesa:</label>
+		<label for="numMesa">Numero de Mesa:</label>
 		<input type="text" name="numMesa" style="display: block;" />
                 <br>
-		<label for="email">Fecha:</label>
+		<label for="fecha">Fecha:</label>
 		<input type="text" name="fecha" style="display: block;"/>
                 <br>
-		<label for="telefono">Hora:</label>
+		<label for="hora">Hora:</label>
 		<input type="text" name="hora" style="display: block;"/>
                 <br>
-                <label for="telefono">Cuetna:</label>
+                <label for="cuenta">Cuetna:</label>
 		<input type="text" name="cuenta" value="null" style="display: block;"/>
                 <br>
 		<input type="submit" value="Añadir" />

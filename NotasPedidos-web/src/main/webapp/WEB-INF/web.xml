@@ -8,6 +8,14 @@
         <servlet-name>NuevaNota</servlet-name>
         <servlet-class>com.mycompany.servlets.NuevaNota</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModificarNota</servlet-name>
+        <servlet-class>com.mycompany.servlets.ModificarNota</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarNota</servlet-name>
+        <servlet-class>com.mycompany.servlets.EliminarNota</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Notas</servlet-name>
         <url-pattern>/Notas</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>NuevaNota</servlet-name>
         <url-pattern>/NuevaNota</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarNota</servlet-name>
+        <url-pattern>/ModificarNota</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarNota</servlet-name>
+        <url-pattern>/EliminarNota</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
