@@ -19,14 +19,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import service.NotasPedidos;
 import service.NotasPedidosLocal;
 
 /**
  *
  * @author alumno
  */
-public class NuevaNota extends HttpServlet {
+public class NotaNueva extends HttpServlet {
 
     @EJB
     private NotasPedidosLocal notasPedidos;
@@ -60,11 +59,11 @@ public class NuevaNota extends HttpServlet {
             try {
                 boolean esta = false;
                 for (int i = 0; i < listaNotasExis.size(); i++) {
-                    if (listaNotasExis.get(i).getFecha() == nota.getFecha() && listaNotasExis.get(i).getHora() == nota.getHora()) {
+                    if (listaNotasExis.get(i).getFecha().equals(nota.getFecha()) && listaNotasExis.get(i).getHora().equalsIgnoreCase(nota.getHora())) {
                         esta = true;
                     }
                 }
-                if (esta = false) {
+                if (esta == false) {
                     notasPedidos.addNota(nota);
                 }
             } catch (Exception e) {
@@ -74,9 +73,9 @@ public class NuevaNota extends HttpServlet {
             ArrayList<NotasPedido> lista = notasPedidos.ListadoNotas();
             request.setAttribute("notas", lista);
             
-            request.getRequestDispatcher("/listarPersonas.jsp").forward(request, response);
+            request.getRequestDispatcher("/listaNotas.jsp").forward(request, response);
         } catch (ParseException ex) {
-            Logger.getLogger(NuevaNota.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NotaNueva.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

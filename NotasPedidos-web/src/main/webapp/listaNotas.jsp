@@ -4,6 +4,7 @@
     Author     : alumno
 --%>
 
+<%@page import="java.text.DateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.mycompany.NotasPedido"%>
@@ -17,43 +18,45 @@
     </head>
     <body>
         <h1>Listado de Notas</h1>
-        
-	<a href="nuevaNota.jsp">Añadir Nota</a>
-	<br/>
-	<br/>
 
-	<table border="1">
-		<tr>
-                    <th>Num. Mesa</th>
-                    <th>Fecha</th>
-                    <th>Hora</th>
-                    <th>Cuenta</th>
-                    <th></th>
-                    <th></th>
- 
-		</tr>
+        <a href="nuevaNota.jsp">Añadir Nota</a>
+        <br/>
+        <br/>
 
-                <%
+        <table border="1">
+            <tr>
+                <th>Num. Mesa</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Cuenta</th>
+                <th></th>
+                <th></th>
+
+            </tr>
+
+            <%
                 ArrayList<NotasPedido> listaNotas = (ArrayList) session.getAttribute("notas");
-                for(NotasPedido nota : listaNotas){                    
-                    
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+                for (NotasPedido nota : listaNotas) {
+
                     int id = nota.getId();
                     int numMesa = nota.getNum_mesa();
-                    Date fecha = nota.getFecha();
+                    Date fechaNuev = nota.getFecha();
+                    String fechaFormateada = formatoFecha.format(fechaNuev);                    
                     String hora = nota.getHora();
                     double cuenta = nota.getCuenta();
-                %>                
-		<tr>
-                    <td><%=numMesa%></td>
-                    <td><%=fecha%></td>
-                    <td><%=hora%></td>
-                    <td><%=cuenta%></td>
-                    <td><a href="ModificarNota?accion=editar&id=<%=id%>">Modificar</a></td>
-                    <td><a href="EliminarNota?id=<%=id%>">Eliminar</a></td>
-                </tr>
-                <% } %>
-	</table>
-	<br>
+            %>                
+            <tr>
+                <td><%=numMesa%></td>
+                <td><%=fechaFormateada%></td>
+                <td><%=hora%></td>
+                <td><%=cuenta%></td>
+                <td><a href="NotaMod?accion=editar&id=<%=id%>">Modificar</a></td>
+                <td><a href="EliminarNota?id=<%=id%>">Eliminar</a></td>
+            </tr>
+            <% }%>
+        </table>
+        <br>
         <a href="productosynotas.jsp">Atras</a>
     </body>
 </html>

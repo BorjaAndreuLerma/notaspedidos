@@ -16,6 +16,14 @@
         <servlet-name>EliminarNota</servlet-name>
         <servlet-class>com.mycompany.servlets.EliminarNota</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NotaNueva</servlet-name>
+        <servlet-class>com.mycompany.servlets.NotaNueva</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NotaMod</servlet-name>
+        <servlet-class>com.mycompany.servlets.NotaMod</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Notas</servlet-name>
         <url-pattern>/Notas</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>EliminarNota</servlet-name>
         <url-pattern>/EliminarNota</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NotaNueva</servlet-name>
+        <url-pattern>/NotaNueva</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NotaMod</servlet-name>
+        <url-pattern>/NotaMod</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -16,6 +16,6 @@
         <a href="Productos">Entrar</a>
         <br><br>
         Entrar a Notas -->
-        <a href="listaNotas.jsp">Entrar</a>
+        <a href="Notas">Entrar</a>
     </body>
 </html>

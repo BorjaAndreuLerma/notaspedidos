@@ -14,7 +14,7 @@
     <body>
         <h1>Añadir Nueva Nota</h1>
 	
-	<form action="NuevaNota" method="post">
+	<form action="NotaNueva" method="post">
 		<input type="hidden" name="accion" value="agregar"/>
 	
 		<label for="numMesa">Numero de Mesa:</label>
@@ -27,11 +27,11 @@
 		<input type="text" name="hora" style="display: block;"/>
                 <br>
                 <label for="cuenta">Cuetna:</label>
-		<input type="text" name="cuenta" value="null" style="display: block;"/>
+		<input type="text" name="cuenta" value="0.0" style="display: block;"/>
                 <br>
 		<input type="submit" value="Añadir" />
 	</form>
 
-	<a href="index.jsp">Volver</a>
+	<a href="listaNotas.jsp">Volver</a>
     </body>
 </html>

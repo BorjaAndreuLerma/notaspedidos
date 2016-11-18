@@ -6,7 +6,7 @@
 package service;
 
 import com.mycompany.NotasPedido;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import javax.ejb.Local;
 

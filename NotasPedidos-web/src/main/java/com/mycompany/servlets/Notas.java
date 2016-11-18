@@ -23,8 +23,6 @@ public class Notas extends HttpServlet {
 
     @EJB
     private service.NotasPedidosLocal notasPedidos;
-    
-    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,16 +35,16 @@ public class Notas extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        try{
+
+        try {
             ArrayList listaDeNotas = notasPedidos.ListadoNotas();
-            request.getSession().setAttribute("notas",listaDeNotas);
+            request.getSession().setAttribute("notas", listaDeNotas);
             RequestDispatcher rd = request.getRequestDispatcher("/listaNotas.jsp");
             rd.forward(request, response);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
