@@ -57,7 +57,7 @@ public class NotaMod extends HttpServlet {
                     e.printStackTrace();
                 }
 
-                request.setAttribute("notaP", nota);
+                request.getSession().setAttribute("notaP", nota);
                 request.getRequestDispatcher("/modificarNota.jsp").forward(request, response);
             }
         }

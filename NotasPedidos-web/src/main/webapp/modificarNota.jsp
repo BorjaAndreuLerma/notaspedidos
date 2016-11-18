@@ -21,22 +21,26 @@
             NotasPedido nota = (NotasPedido) session.getAttribute("notaP");
             Date fechaNuev = nota.getFecha();
             String fechaFormateada = formatoFecha.format(fechaNuev);
+            int id = nota.getId();
+            String hora = nota.getHora();
+            double cuenta = nota.getCuenta();
+            int numMesa = nota.getNum_mesa();
         %>
         <h1>Modificar Nota</h1>
 
-        <form action="NotaMod?accion=modificar&id=${nota.id}" method="post">
+        <form action="NotaMod?accion=modificar&id=<%=id%>" method="post">
 
             <label for="numMesa">Numero Mesa: </label>
-            <input type="text" name="numMesa" value="${nota.num_mesa}" style="display: block;" />
+            <input type="text" name="numMesa" value="<%=numMesa%>" style="display: block;" />
 
             <label for="fecha">Fecha: </label>
             <input type="text" name="fecha" value="<%=fechaFormateada%>" style="display: block;"/>
 
             <label for="hora">Hora: </label>
-            <input type="text" name="hora" value="${nota.hora}" style="display: block;"/>
+            <input type="text" name="hora" value="<%=hora%>" style="display: block;"/>
 
             <label for="cuenta">Cuenta: </label>
-            <input type="text" name="cuenta" value="${nota.cuenta}" style="display: block;"/>
+            <input type="text" name="cuenta" value="<%=cuenta%>" style="display: block;"/>
 
             <input type="submit" name="guardar" value="Modificar">
         </form>
